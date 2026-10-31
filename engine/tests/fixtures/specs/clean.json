@@ -1,0 +1,15 @@
+{
+  "id": "clean", "title": "Clean spec", "subtitle": "fixture",
+  "thumbnail": {"lines": ["CLEAN"], "badge": "TEST"},
+  "objects": [
+    {"id": "A", "type": "point", "at": [1, 0.5], "label": "A"},
+    {"id": "B", "type": "point", "at": [9, 5.5], "label": "B"},
+    {"id": "AB", "type": "segment", "from": "A", "to": "B", "color": "primary"}
+  ],
+  "beats": [
+    {"chapter": "Intro", "say": "Two points and a line.", "do": [{"op": "show", "ids": ["A", "B"]}, {"op": "create", "ids": ["AB"], "at": 0.4}]},
+    {"say": "Its length follows Pythagoras.", "do": [{"op": "callout", "text": "Pythagoras", "near": "AB"}, {"op": "eq", "tex": "|AB|=\\sqrt{8^2+5^2}", "at": 0.3}]},
+    {"say": "That is about nine point four.", "do": [{"op": "eq", "tex": "|AB|\\approx 9.43", "box": true, "color": "accent"}]}
+  ],
+  "short": {"hook": ["HOW LONG?"], "beats": [0, 2], "cta": "Follow for more."}
+}

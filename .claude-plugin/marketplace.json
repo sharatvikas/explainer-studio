@@ -1,0 +1,14 @@
+{
+  "name": "explainer-studio-marketplace",
+  "owner": {
+    "name": "Sarat Vikas"
+  },
+  "plugins": [
+    {
+      "name": "explainer-studio",
+      "source": "./",
+      "description": "Animated explainer videos from any folder"
+    }
+  ],
+  "description": "Explainer Studio: turn notes, questions, PDFs and screenshots into researched, animated explainer videos and Shorts."
+}

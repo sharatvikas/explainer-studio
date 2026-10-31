@@ -1,0 +1,10 @@
+{
+  "id": "overflow", "title": "Overflow",
+  "objects": [
+    {"id": "A", "type": "point", "at": [2, 2]},
+    {"id": "far", "type": "text", "text": "I am far away", "at": [40, 3]},
+    {"id": "l1", "type": "label", "tex": "first\\ label", "at": "A"},
+    {"id": "l2", "type": "label", "tex": "second\\ label", "at": "A"}
+  ],
+  "beats": [{"say": "Things collide.", "do": [{"op": "show", "ids": ["A", "far", "l1", "l2"]}]}]
+}

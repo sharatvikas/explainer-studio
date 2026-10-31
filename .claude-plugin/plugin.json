@@ -1,0 +1,89 @@
+{
+  "name": "explainer-studio",
+  "displayName": "Explainer Studio",
+  "version": "0.1.0",
+  "description": "Turn any folder of notes, questions or screenshots into researched, animated explainer videos and Shorts.",
+  "author": {
+    "name": "Sarat Vikas"
+  },
+  "license": "MIT",
+  "keywords": [
+    "video",
+    "education",
+    "manim",
+    "shorts",
+    "explainer"
+  ],
+  "userConfig": {
+    "channel_name": {
+      "type": "string",
+      "title": "Channel name",
+      "description": "Shown on the end card and watermark",
+      "required": true
+    },
+    "channel_url": {
+      "type": "string",
+      "title": "Website or channel URL",
+      "description": "Shown in the watermark and description",
+      "default": ""
+    },
+    "logo": {
+      "type": "file",
+      "title": "Logo image (optional)",
+      "description": "Square PNG works best. Leave empty for a generated badge."
+    },
+    "voice": {
+      "type": "string",
+      "title": "Narrator voice",
+      "description": "Free local voice",
+      "options": [
+        "am_michael",
+        "bm_george",
+        "am_fenrir",
+        "af_heart",
+        "bf_emma"
+      ],
+      "default": "am_michael"
+    },
+    "default_outputs": {
+      "type": "string",
+      "title": "Default outputs",
+      "description": "Used when your request doesn't say",
+      "options": [
+        "long+short+thumb",
+        "short-only",
+        "long-only",
+        "long+thumb"
+      ],
+      "default": "long+short+thumb"
+    },
+    "default_template": {
+      "type": "string",
+      "title": "Default format",
+      "description": "auto picks per item",
+      "options": [
+        "auto",
+        "worked-problem",
+        "concept-explainer",
+        "quiz",
+        "facts-list",
+        "timeline",
+        "compare"
+      ],
+      "default": "auto"
+    },
+    "research": {
+      "type": "string",
+      "title": "Research level",
+      "description": "vet = fact-check answers online; deep = also find hooks and misconceptions",
+      "options": [
+        "off",
+        "vet",
+        "deep"
+      ],
+      "default": "vet"
+    }
+  },
+  "homepage": "https://github.com/sharatvikas/explainer-studio",
+  "repository": "https://github.com/sharatvikas/explainer-studio"
+}

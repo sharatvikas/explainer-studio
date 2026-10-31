@@ -1,0 +1,141 @@
+{
+  "id": "quiz-short",
+  "template": "quiz",
+  "title": "Which Falls First?",
+  "subtitle": "60-second physics quiz",
+  "thumbnail": {
+    "lines": [
+      "WHICH FALLS",
+      "FIRST?"
+    ],
+    "badge": "QUIZ"
+  },
+  "objects": [
+    {
+      "id": "options",
+      "type": "bullet_list",
+      "items": [
+        "A. The bowling ball",
+        "B. The feather",
+        "C. Both together"
+      ],
+      "zone": "panel",
+      "style": "cards"
+    },
+    {
+      "id": "why",
+      "type": "card",
+      "title": "Why?",
+      "body": "With no air, every object falls with the same acceleration g.",
+      "zone": "panel"
+    }
+  ],
+  "beats": [
+    {
+      "chapter": "Question",
+      "say": "In a vacuum, you drop a bowling ball and a feather. Which lands first?",
+      "do": [
+        {
+          "op": "reveal",
+          "text": "Which lands first?"
+        }
+      ]
+    },
+    {
+      "say": "Is it the ball, the feather, or both together?",
+      "do": [
+        {
+          "op": "step",
+          "id": "options"
+        },
+        {
+          "op": "step",
+          "id": "options",
+          "at": 0.3
+        },
+        {
+          "op": "step",
+          "id": "options",
+          "at": 0.6
+        }
+      ]
+    },
+    {
+      "say": "Think fast.",
+      "do": [
+        {
+          "op": "countdown",
+          "from": 3
+        }
+      ]
+    },
+    {
+      "chapter": "Answer",
+      "say": "They land together.",
+      "do": [
+        {
+          "op": "highlight",
+          "ids": [
+            "options"
+          ],
+          "color": "good",
+          "sfx": "win"
+        }
+      ]
+    },
+    {
+      "say": "Without air, everything falls with the same acceleration.",
+      "do": [
+        {
+          "op": "panel_clear"
+        },
+        {
+          "op": "hide",
+          "ids": [
+            "options"
+          ]
+        },
+        {
+          "op": "show",
+          "ids": [
+            "why"
+          ],
+          "at": 0.2
+        }
+      ]
+    },
+    {
+      "say": "Mass cancels out of the equation.",
+      "do": [
+        {
+          "op": "hide",
+          "ids": [
+            "why"
+          ]
+        },
+        {
+          "op": "eq",
+          "tex": "a=\\dfrac{mg}{m}=g",
+          "color": "accent",
+          "box": true,
+          "at": 0.2
+        }
+      ]
+    }
+  ],
+  "short": {
+    "hook": [
+      "QUICK",
+      "QUIZ"
+    ],
+    "beats": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5
+    ],
+    "cta": "Follow for a new quiz every day."
+  }
+}

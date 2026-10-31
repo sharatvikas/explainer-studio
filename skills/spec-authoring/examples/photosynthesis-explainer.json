@@ -1,0 +1,221 @@
+{
+  "id": "photosynthesis-explainer",
+  "template": "concept-explainer",
+  "title": "How Plants Eat Sunlight",
+  "subtitle": "Photosynthesis in 3 minutes",
+  "thumbnail": {
+    "lines": [
+      "PLANTS",
+      "EAT LIGHT"
+    ],
+    "badge": "BIOLOGY",
+    "formula": "6CO_2+6H_2O\\rightarrow C_6H_{12}O_6+6O_2"
+  },
+  "objects": [
+    {
+      "id": "inputs",
+      "type": "flow",
+      "nodes": [
+        "Sunlight",
+        "Water + CO2",
+        "Chloroplast",
+        "Glucose + O2"
+      ],
+      "zone": "stage"
+    },
+    {
+      "id": "card",
+      "type": "card",
+      "title": "Chlorophyll",
+      "body": "The green pigment that absorbs red and blue light and reflects green.",
+      "zone": "panel"
+    },
+    {
+      "id": "steps",
+      "type": "bullet_list",
+      "items": [
+        "Light reactions split water",
+        "Energy is stored in ATP",
+        "The Calvin cycle builds sugar"
+      ],
+      "zone": "panel"
+    },
+    {
+      "id": "absorb",
+      "type": "bar_chart",
+      "labels": [
+        "Blue",
+        "Green",
+        "Red"
+      ],
+      "values": [
+        90,
+        20,
+        80
+      ],
+      "zone": "stage"
+    }
+  ],
+  "beats": [
+    {
+      "chapter": "The question",
+      "say": "A tree can weigh tons. So where does all that mass come from?",
+      "do": [
+        {
+          "op": "reveal",
+          "text": "Where does a tree's mass come from?"
+        }
+      ]
+    },
+    {
+      "say": "Not the soil. Mostly, it comes out of thin air.",
+      "do": [
+        {
+          "op": "callout",
+          "text": "From the air!",
+          "color": "good",
+          "at": 0.4
+        }
+      ]
+    },
+    {
+      "chapter": "The recipe",
+      "say": "Plants take in sunlight, water and carbon dioxide.",
+      "do": [
+        {
+          "op": "step",
+          "id": "inputs"
+        },
+        {
+          "op": "step",
+          "id": "inputs",
+          "at": 0.5
+        }
+      ]
+    },
+    {
+      "say": "Inside the chloroplast, they turn them into glucose and oxygen.",
+      "do": [
+        {
+          "op": "step",
+          "id": "inputs"
+        },
+        {
+          "op": "step",
+          "id": "inputs",
+          "at": 0.5
+        }
+      ]
+    },
+    {
+      "say": "Here is the whole recipe in one line.",
+      "do": [
+        {
+          "op": "panel_clear"
+        },
+        {
+          "op": "eq",
+          "tex": "6CO_2+6H_2O\\rightarrow C_6H_{12}O_6+6O_2",
+          "color": "accent",
+          "box": true,
+          "sfx": "ding"
+        }
+      ]
+    },
+    {
+      "chapter": "Why green?",
+      "say": "The key molecule is chlorophyll.",
+      "do": [
+        {
+          "op": "panel_clear"
+        },
+        {
+          "op": "show",
+          "ids": [
+            "card"
+          ]
+        }
+      ]
+    },
+    {
+      "say": "It soaks up blue and red light, but bounces green light back to your eyes.",
+      "do": [
+        {
+          "op": "hide",
+          "ids": [
+            "inputs"
+          ]
+        },
+        {
+          "op": "chart_grow",
+          "id": "absorb",
+          "at": 0.3
+        }
+      ]
+    },
+    {
+      "chapter": "Two stages",
+      "say": "The work happens in two stages.",
+      "do": [
+        {
+          "op": "hide",
+          "ids": [
+            "card",
+            "absorb"
+          ]
+        },
+        {
+          "op": "step",
+          "id": "steps"
+        }
+      ]
+    },
+    {
+      "say": "Energy from light is captured, then used to build sugar from carbon dioxide.",
+      "do": [
+        {
+          "op": "step",
+          "id": "steps"
+        },
+        {
+          "op": "step",
+          "id": "steps",
+          "at": 0.5
+        }
+      ]
+    },
+    {
+      "chapter": "Recap",
+      "say": "So most of a tree is carbon, pulled from the air and powered by sunlight.",
+      "do": [
+        {
+          "op": "panel_clear"
+        },
+        {
+          "op": "hide",
+          "ids": [
+            "steps"
+          ]
+        },
+        {
+          "op": "reveal",
+          "text": "Trees are built from air",
+          "at": 0.3
+        }
+      ]
+    }
+  ],
+  "short": {
+    "hook": [
+      "TREES ARE",
+      "MADE OF AIR?"
+    ],
+    "beats": [
+      0,
+      6,
+      4,
+      9
+    ],
+    "cta": "Follow for more science in sixty seconds."
+  }
+}

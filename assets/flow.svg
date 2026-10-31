@@ -1,0 +1,109 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 640" width="1200" height="640" font-family="Segoe UI, -apple-system, Helvetica, Arial, sans-serif">
+  <title>Explainer Studio flow: source folder to finished videos</title>
+  <defs>
+    <marker id="ar" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#8A93A6"/>
+    </marker>
+    <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="8" markerHeight="8" orient="auto-start-reverse">
+      <path d="M0,0 L10,5 L0,10 z" fill="#F2696B"/>
+    </marker>
+    <linearGradient id="lane" x1="0" x2="1">
+      <stop offset="0" stop-color="#141923"/><stop offset="1" stop-color="#18202E"/>
+    </linearGradient>
+  </defs>
+
+  <rect width="1200" height="640" rx="28" fill="#0B0E14"/>
+  <text x="48" y="64" font-size="30" font-weight="800" fill="#E8ECF2">Explainer Studio</text>
+  <text x="48" y="94" font-size="17" fill="#8A93A6">From any folder to researched, animated 1080p videos — one command</text>
+
+  <!-- Row 1: source → ingest → plan -->
+  <g>
+    <rect x="48" y="130" width="300" height="170" rx="18" fill="#141923" stroke="#79A9F5" stroke-width="2"/>
+    <text x="70" y="166" font-size="20" font-weight="700" fill="#79A9F5">Source folder</text>
+    <g font-size="14" fill="#E8ECF2">
+      <rect x="70" y="182" width="62" height="28" rx="8" fill="#22304A"/><text x="101" y="201" text-anchor="middle">.md</text>
+      <rect x="140" y="182" width="62" height="28" rx="8" fill="#22304A"/><text x="171" y="201" text-anchor="middle">.pdf</text>
+      <rect x="210" y="182" width="70" height="28" rx="8" fill="#22304A"/><text x="245" y="201" text-anchor="middle">.docx</text>
+      <rect x="70" y="218" width="70" height="28" rx="8" fill="#22304A"/><text x="105" y="237" text-anchor="middle">.pptx</text>
+      <rect x="148" y="218" width="100" height="28" rx="8" fill="#22304A"/><text x="198" y="237" text-anchor="middle">.csv / .json</text>
+      <rect x="70" y="254" width="130" height="28" rx="8" fill="#22304A"/><text x="135" y="273" text-anchor="middle">screenshots</text>
+    </g>
+  </g>
+  <line x1="348" y1="215" x2="410" y2="215" stroke="#8A93A6" stroke-width="3" marker-end="url(#ar)"/>
+  <g>
+    <rect x="415" y="160" width="200" height="110" rx="18" fill="#141923" stroke="#8A93A6" stroke-width="2"/>
+    <text x="515" y="204" font-size="20" font-weight="700" fill="#E8ECF2" text-anchor="middle">Ingest</text>
+    <text x="515" y="230" font-size="14" fill="#8A93A6" text-anchor="middle">text pulled out by code</text>
+    <text x="515" y="250" font-size="14" fill="#8A93A6" text-anchor="middle">(no tokens spent)</text>
+  </g>
+  <line x1="615" y1="215" x2="677" y2="215" stroke="#8A93A6" stroke-width="3" marker-end="url(#ar)"/>
+  <g>
+    <rect x="682" y="160" width="250" height="110" rx="18" fill="#141923" stroke="#F4CF6B" stroke-width="2"/>
+    <text x="807" y="204" font-size="20" font-weight="700" fill="#F4CF6B" text-anchor="middle">Plan</text>
+    <text x="807" y="230" font-size="14" fill="#E8ECF2" text-anchor="middle">"one quiz Short per question"</text>
+    <text x="807" y="250" font-size="14" fill="#8A93A6" text-anchor="middle">your request → list of videos</text>
+  </g>
+  <path d="M807 270 L807 330" stroke="#8A93A6" stroke-width="3" fill="none" marker-end="url(#ar)"/>
+
+  <!-- Row 2: per-item lane -->
+  <rect x="48" y="338" width="884" height="250" rx="22" fill="url(#lane)" stroke="#2A3242" stroke-width="2"/>
+  <text x="72" y="372" font-size="16" font-weight="700" fill="#8A93A6" letter-spacing="1">FOR EACH ITEM  ·  fresh, small context</text>
+
+  <g font-size="14" text-anchor="middle">
+    <rect x="72" y="392" width="150" height="120" rx="16" fill="#0B0E14" stroke="#5ED39B" stroke-width="2"/>
+    <text x="147" y="430" font-size="18" font-weight="700" fill="#5ED39B">Research</text>
+    <text x="147" y="452" fill="#E8ECF2">&amp; vet</text>
+    <text x="147" y="476" fill="#8A93A6">web sources +</text>
+    <text x="147" y="494" fill="#8A93A6">numeric check</text>
+
+    <line x1="222" y1="452" x2="246" y2="452" stroke="#8A93A6" stroke-width="3" marker-end="url(#ar)"/>
+    <rect x="250" y="392" width="150" height="120" rx="16" fill="#0B0E14" stroke="#79A9F5" stroke-width="2"/>
+    <text x="325" y="430" font-size="18" font-weight="700" fill="#79A9F5">Spec</text>
+    <text x="325" y="456" fill="#E8ECF2">template + kit</text>
+    <text x="325" y="478" fill="#8A93A6">beats, visuals,</text>
+    <text x="325" y="496" fill="#8A93A6">narration</text>
+
+    <line x1="400" y1="452" x2="424" y2="452" stroke="#8A93A6" stroke-width="3" marker-end="url(#ar)"/>
+    <rect x="428" y="392" width="150" height="120" rx="16" fill="#0B0E14" stroke="#F4CF6B" stroke-width="2"/>
+    <text x="503" y="430" font-size="18" font-weight="700" fill="#F4CF6B">Check</text>
+    <text x="503" y="456" fill="#E8ECF2">layout QA</text>
+    <text x="503" y="478" fill="#8A93A6">no clutter, overlap</text>
+    <text x="503" y="496" fill="#8A93A6">or tiny text</text>
+
+    <line x1="578" y1="452" x2="602" y2="452" stroke="#8A93A6" stroke-width="3" marker-end="url(#ar)"/>
+    <rect x="606" y="392" width="150" height="120" rx="16" fill="#0B0E14" stroke="#F5A543" stroke-width="2"/>
+    <text x="681" y="430" font-size="18" font-weight="700" fill="#F5A543">Render</text>
+    <text x="681" y="456" fill="#E8ECF2">Manim + voice</text>
+    <text x="681" y="478" fill="#8A93A6">1080p · 60 fps</text>
+    <text x="681" y="496" fill="#8A93A6">free local TTS</text>
+
+    <line x1="756" y1="452" x2="780" y2="452" stroke="#8A93A6" stroke-width="3" marker-end="url(#ar)"/>
+    <rect x="784" y="392" width="128" height="120" rx="16" fill="#0B0E14" stroke="#E8ECF2" stroke-width="2"/>
+    <text x="848" y="430" font-size="18" font-weight="700" fill="#E8ECF2">Package</text>
+    <text x="848" y="456" fill="#8A93A6">music, captions,</text>
+    <text x="848" y="476" fill="#8A93A6">watermark,</text>
+    <text x="848" y="496" fill="#8A93A6">−14 LUFS</text>
+  </g>
+
+  <!-- needs-attention branch -->
+  <path d="M147 512 L147 552 L300 552" stroke="#F2696B" stroke-width="3" fill="none" stroke-dasharray="7 6" marker-end="url(#arr)"/>
+  <text x="310" y="557" font-size="15" fill="#F2696B">answer doesn't check out → held back as "needs attention" (never rendered)</text>
+
+  <!-- outputs -->
+  <line x1="932" y1="452" x2="966" y2="452" stroke="#8A93A6" stroke-width="3" marker-end="url(#ar)"/>
+  <g>
+    <rect x="970" y="160" width="190" height="428" rx="18" fill="#141923" stroke="#5ED39B" stroke-width="2"/>
+    <text x="1065" y="198" font-size="18" font-weight="700" fill="#5ED39B" text-anchor="middle">output/&lt;item&gt;/</text>
+    <g font-size="15" fill="#E8ECF2">
+      <rect x="990" y="222" width="150" height="54" rx="10" fill="#0B0E14"/>
+      <text x="1003" y="245">long.mp4</text><text x="1003" y="266" font-size="12" fill="#8A93A6">1920 × 1080</text>
+      <rect x="990" y="286" width="150" height="54" rx="10" fill="#0B0E14"/>
+      <text x="1003" y="309">short.mp4</text><text x="1003" y="330" font-size="12" fill="#8A93A6">1080 × 1920 + captions</text>
+      <rect x="990" y="350" width="150" height="40" rx="10" fill="#0B0E14"/><text x="1003" y="376">thumbnail.png</text>
+      <rect x="990" y="400" width="150" height="40" rx="10" fill="#0B0E14"/><text x="1003" y="426">subtitles.srt</text>
+      <rect x="990" y="450" width="150" height="40" rx="10" fill="#0B0E14"/><text x="1003" y="476">description.txt</text>
+      <rect x="990" y="500" width="150" height="40" rx="10" fill="#0B0E14"/><text x="1003" y="526">research.md</text>
+    </g>
+    <text x="1065" y="570" font-size="12" fill="#8A93A6" text-anchor="middle">+ REPORT.md for the batch</text>
+  </g>
+</svg>

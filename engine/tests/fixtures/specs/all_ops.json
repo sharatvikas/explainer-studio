@@ -1,0 +1,42 @@
+{
+  "id": "all-ops",
+  "template": "concept-explainer",
+  "title": "Every op once",
+  "subtitle": "test fixture",
+  "thumbnail": {"lines": ["EVERY", "OP"], "badge": "TEST", "formula": "x^2"},
+  "params": {"x": 0.5},
+  "objects": [
+    {"id": "ground", "type": "region", "corners": [[0,0],[10,0],[10,2],[0,2]], "style": "grass"},
+    {"id": "A", "type": "point", "at": [1, 2], "label": "A"},
+    {"id": "B", "type": "point", "at": [9, 5], "label": "B"},
+    {"id": "P", "type": "point", "at": ["1 + 8*x/2", 2], "label": "P", "color": "accent"},
+    {"id": "AP", "type": "segment", "from": "A", "to": "P", "color": "road"},
+    {"id": "PB", "type": "segment", "from": "P", "to": "B", "color": "field"},
+    {"id": "B2", "type": "point", "at": [8, 4]},
+    {"id": "facts", "type": "bullet_list", "items": ["First idea", "Second idea", "Third idea"]},
+    {"id": "bars", "type": "bar_chart", "labels": ["a", "b"], "values": [2, 5]}
+  ],
+  "beats": [
+    {"chapter": "Start", "say": "Here is a field with two points.", "do": [
+      {"op": "show", "ids": ["ground", "A", "B"]}, {"op": "camera", "focus": "stage", "zoom": 1.3, "at": 0.5}]},
+    {"say": "Let us draw a path through P.", "do": [
+      {"op": "create", "ids": ["AP", "PB", "P"]}, {"op": "camera", "reset": true, "at": 0.6}]},
+    {"say": "Title time.", "do": [{"op": "title_card"}]},
+    {"say": "Watch the cost curve as P slides.", "do": [
+      {"op": "graph", "id": "g", "fn": "x**2 - 2*x + 2", "var": "x", "range": [0, 2], "trace": true},
+      {"op": "tween", "param": "x", "to": 2, "rate": "linear", "at": 0.2}]},
+    {"say": "Highlight, flash and colour.", "do": [
+      {"op": "highlight", "ids": ["P"]}, {"op": "flash", "ids": ["PB"], "at": 0.3}, {"op": "color", "ids": ["AP"], "to": "good", "at": 0.6}]},
+    {"say": "Now some algebra appears on the right.", "do": [
+      {"op": "panel_clear"}, {"op": "eq", "tex": "t(x)=x^2-2x+2", "sfx": "pop"}, {"op": "eq", "tex": "\\dfrac{dt}{dx}=2x-2=0", "at": 0.5}]},
+    {"say": "So x equals one.", "do": [{"op": "eq", "tex": "x=1", "box": true, "color": "accent", "sfx": "ding"}]},
+    {"say": "A callout and a reveal.", "do": [{"op": "callout", "text": "Minimum!", "near": "P"}, {"op": "reveal", "text": "Least time wins", "at": 0.4}]},
+    {"say": "Move a point, morph a point, fade a line.", "do": [
+      {"op": "move", "id": "B", "set": {"at": [9, 4.5]}}, {"op": "show", "ids": ["B2"], "at": 0.3}, {"op": "morph", "id": "B2", "into": "A", "at": 0.5}, {"op": "fade", "ids": ["AP"], "to": 0.3, "at": 0.7}]},
+    {"say": "Three key ideas.", "do": [{"op": "panel_clear"}, {"op": "step", "id": "facts"}, {"op": "step", "id": "facts", "at": 0.4}, {"op": "step", "id": "facts", "at": 0.7}]},
+    {"say": "A chart grows, then a countdown.", "do": [{"op": "panel_clear"}, {"op": "chart_grow", "id": "bars"}, {"op": "countdown", "from": 3, "at": 0.5}]},
+    {"say": "Wait, hide and a sound.", "do": [{"op": "wait", "seconds": 0.3}, {"op": "hide", "ids": ["bars"]}, {"op": "sfx", "name": "whoosh"}, {"op": "write", "ids": ["B2"], "at": 0.5}]},
+    {"say": "And a custom flourish.", "do": [{"op": "custom", "file": "custom_ops.py", "fn": "spin"}]}
+  ],
+  "short": {"hook": ["EVERY", "OP"], "beats": [0, 3, 6], "cta": "Full video linked below."}
+}
