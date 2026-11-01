@@ -42,4 +42,4 @@ def test_failure_writes_log(tmp_path):
     bad.write_text('{"id":"bad","title":"x","beats":[{"say":"hi","do":[{"op":"show","ids":["ghost"]}]}]}', encoding="utf-8")
     with pytest.raises(Exception):
         render.render(bad, "long", "preview", brand.Brand(channel_name="T"), tmp_path)
-    assert "ghost" in (tmp_path / "render.log").read_text(encoding="utf-8")
+    assert "ghost" in (tmp_path / "long.render.log").read_text(encoding="utf-8")

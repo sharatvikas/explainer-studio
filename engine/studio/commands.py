@@ -61,12 +61,17 @@ def _render_cfg(p):
     p.add_argument("--channel-url", default="")
     p.add_argument("--logo", default="")
     p.add_argument("--voice", default="")
+    p.add_argument("--brand-file", default="", help="JSON with channel_name/channel_url/logo/voice (safe for any characters)")
 
 
 def brand_from_args(a):
     from .brand import load
 
-    return load(Path(a.workspace), {"channel_name": a.channel_name, "channel_url": a.channel_url, "logo": a.logo, "voice": a.voice})
+    cfg = {"channel_name": a.channel_name, "channel_url": a.channel_url, "logo": a.logo, "voice": a.voice}
+    if getattr(a, "brand_file", ""):
+        data = json.loads(Path(a.brand_file).read_text(encoding="utf-8"))
+        cfg.update({k: v for k, v in data.items() if k in cfg and v})
+    return load(Path(a.workspace), cfg)
 
 
 @command("render")
@@ -95,6 +100,7 @@ def _render_cfg_common(p):
     p.add_argument("--channel-url", default="")
     p.add_argument("--logo", default="")
     p.add_argument("--voice", default="")
+    p.add_argument("--brand-file", default="")
 
 
 @command("package")
@@ -227,3 +233,30 @@ def cmd_sheet(a):
 
 
 cmd_sheet.configure = _sheet_cfg
+
+
+def _catalogue_cfg(p):
+    p.add_argument("source", help="catalogue JSON: {series, items: [{title, kind, question, answer, ...}]}")
+    p.add_argument("--out", required=True, help="folder for catalogue.csv, e.g. series/<slug>")
+    p.add_argument("--exclude", nargs="*", default=[], help="folders of finished videos or text files of existing titles")
+
+
+@command("catalogue")
+def cmd_catalogue(a):
+    from .catalogue import validate, write_csv
+
+    try:
+        data = json.loads(Path(a.source).read_text(encoding="utf-8"))
+    except json.JSONDecodeError as e:
+        print(f"invalid JSON at line {e.lineno}: {e.msg}")
+        return 1
+    rows, errors, warnings = validate(data, exclude=a.exclude)
+    for line in errors + [f"warning: {w}" for w in warnings]:
+        print(line)
+    if errors:
+        return 1
+    print(f"catalogue ok: {len(rows)} items -> {write_csv(rows, Path(a.out))}")
+    return 0
+
+
+cmd_catalogue.configure = _catalogue_cfg

@@ -10,7 +10,12 @@ argument-hint: [folder] ["what you want"]
 `input "one 60-second quiz Short per question"`.
 
 `STUDIO` means exactly: `uv run --project "${CLAUDE_PLUGIN_ROOT}/engine" studio`
-`BRAND` means exactly: `--workspace . --channel-name "${user_config.channel_name}" --channel-url "${user_config.channel_url}" --logo "${user_config.logo}" --voice "${user_config.voice}"`
+`BRAND` means exactly: `--workspace . --brand-file work/brand.config.json`
+
+Before the first render, use the **Write tool** (never a shell command, so names with quotes or `$` stay intact)
+to write `work/brand.config.json` as JSON with these exact values:
+channel_name = ${user_config.channel_name} · channel_url = ${user_config.channel_url} · logo = ${user_config.logo}
+· voice = ${user_config.voice}
 
 ## Token rules (follow strictly)
 - Never Read video/audio files. Read images only to identify items, or a contact sheet when a check fails.
@@ -40,6 +45,9 @@ argument-hint: [folder] ["what you want"]
    - `outputs`: from the request, else `${user_config.default_outputs}` (`long+short+thumb` → `["long","short","thumb"]`).
    - `research`: from the request ("no research" → off, "deep research" → deep), else `${user_config.research}`.
    - ids: lowercase slugs, unique.
+   - A `catalogue.csv` (from `/explainer-studio:plan-series`) already gives each row's `id`, `template`, `outputs`
+     (`long+short+thumb` style), `answer`, `key_points` and `hook`: use them as given (put `key_points` and `hook`
+     in `notes`); the request can still narrow which rows to make ("only the first 3").
    Run `STUDIO plan-check work/plan.json` and fix errors.
    If there are more than 5 items or the request was ambiguous, show a compact table (id · title · template · outputs)
    and ask once whether to proceed. Otherwise proceed.
@@ -56,7 +64,7 @@ argument-hint: [folder] ["what you want"]
    `missing` field (outputs that are absent, preview-sized, or older than the spec), in the background
    (at most 2 renders at the same time; each long video takes several minutes):
    `STUDIO render work/<id>/spec.json --format <long|short|thumb> --quality final BRAND`
-   If a render fails, read the last 20 lines of `work/<id>/render.log`, fix the spec if it's a spec problem
+   If a render fails, read the last 20 lines of `work/<id>/<format>.render.log`, fix the spec if it's a spec problem
    (then re-run `STUDIO check`), retry once, else mark needs-attention.
 
 6. **Package** — when an item's renders are done:

@@ -74,6 +74,21 @@ or tell it what you want:
 ```
 Finished files appear in `output/<item>/`, with a summary in `output/REPORT.md`.
 
+## Plan a whole series first (optional)
+
+Not sure what to make next? Describe the subject and let Claude plan it:
+```
+/explainer-studio:plan-series "Class 11 kinematics, 10 videos, JEE level"
+```
+You get `series/<name>/catalogue.csv`: one row per video with the title, kind (concept, problem, quiz…),
+question, checked answer, key points and opening hook, ordered so each video builds on the last. Topics
+already in `output/` (or in a titles file you pass, one per line) are avoided. Open it in Excel or Google
+Sheets, edit or delete rows, then:
+```
+/explainer-studio:make series/class-11-kinematics
+/explainer-studio:make series/class-11-kinematics "only the first 3, Shorts only"
+```
+
 ## Writing questions in a file
 
 ```markdown
@@ -86,7 +101,7 @@ A car on a highway must reach point B in a field, where it moves η times slower
 At what angle is the range greatest?
 **Answer:** 45 degrees
 ```
-CSV/JSON use the columns `question, answer, solution, title, source, notes`. Answers are optional: the research step works them out and checks them.
+CSV/JSON use the columns `question, answer, solution, title, source, notes` (a series catalogue adds `id, kind, template, outputs, key_points, hook`). Answers are optional: the research step works them out and checks them.
 
 ## Research and fact-checking
 

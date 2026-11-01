@@ -45,9 +45,9 @@ def render(spec_path: Path, fmt: str, quality: str, brand: Brand, out_dir: Path)
         tmp = target.with_name(target.stem + ".tmp" + target.suffix)
         shutil.copyfile(produced, tmp)
         os.replace(tmp, target)
-        (out_dir / "render.log").unlink(missing_ok=True)
+        (out_dir / f"{fmt}.render.log").unlink(missing_ok=True)
         return target
     except Exception:
         tail = traceback.format_exc().splitlines()[-40:]
-        (out_dir / "render.log").write_text("\n".join(tail), encoding="utf-8")
+        (out_dir / f"{fmt}.render.log").write_text("\n".join(tail), encoding="utf-8")
         raise
