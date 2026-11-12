@@ -1,0 +1,36 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    name: Engine tests
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: engine
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: System libraries for manim (cairo, pango) and ffmpeg
+        run: |
+          sudo apt-get update
+          sudo apt-get install -y --no-install-recommends libcairo2-dev libpango1.0-dev pkg-config ffmpeg
+
+      - uses: astral-sh/setup-uv@v10.3.3
+        with:
+          working-directory: engine
+          python-version: "3.12"
+
+      - name: Install
+        run: uv sync --frozen
+
+      # pytest.ini_options deselects the slow video renders by default.
+      - name: Test
+        run: uv run --frozen pytest -q
