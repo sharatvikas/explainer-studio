@@ -31,6 +31,17 @@ jobs:
       - name: Install
         run: uv sync --frozen
 
+      # The voice model (~350 MB, pinned by SHA-256 in studio/models.py) is needed by tests
+      # that render through the TTS engine; cache it so it downloads once.
+      - name: Cache voice model
+        uses: actions/cache@v6.1.0
+        with:
+          path: ~/.explainer-studio/models
+          key: kokoro-${{ hashFiles('engine/studio/models.py') }}
+
+      - name: Download voice model
+        run: uv run --frozen studio models
+
       # pytest.ini_options deselects the slow video renders by default.
       - name: Test
         run: uv run --frozen pytest -q
